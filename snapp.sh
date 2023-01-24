@@ -93,7 +93,7 @@ cat "DADA2_summary.csv" | sed -e 's/"//g' >> $log
 ${SCRIPTS}/get_asv_files.py asv_seqNcount.csv asv
 
 echo -e "\n    Unique ASV pairs from DADA2: $(bc <<< "$(grep -c ">" \
-    asv_seq.fasta)/2")"  >>$log
+    asv_seq.fasta)")"  >>$log
 echo "    Ends: $(date)">>$log
 end=$(date +%s.%N)
 runtime=$(python -c "print(${end} - ${start})")
