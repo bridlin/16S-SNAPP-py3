@@ -22,9 +22,14 @@ def split_asv_count(tbl, prefix):
             PE = cols[0].replace('"', '')
             R1R2 = PE.split('NNNNNNNNNN')
             ID = 'asv_%s'%count
-            if len(R1R2) == 2:
+            if len(R1R2) == 1:
+                fasta = '>' + ID + '\n' + PE
+                single.write(fasta + '\n')
+                cols[0] = ID
+                # tblout.write(string.join(cols, ',') + '\n')
+                tblout.write(','.join(cols) + '\n')
+            elif len(R1R2) == 2
                 R1, R2 = R1R2
-
                 fasta1 = '>' + ID + '_R1' + '\n' + R1 + '\n'
                 fasta2 = '>' + ID + '_R2' + '\n' + R2 + '\n'
                 single.write(fasta1 + fasta2)
