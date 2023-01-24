@@ -106,13 +106,13 @@ if [[ -z $RDP_CLASSIFIER ]]
 then
     java -Xmx4g -jar ${RDPHOME}/classifier.jar \
         -f fixrank \
-        -o asv_PE.cls \
-        asv_PE.fasta
+        -o asv_seq.cls \
+        asv_seq.fasta
 else
     java -Xmx4g -jar ${RDPHOME}/classifier.jar \
         -t $RDP_CLASSIFIER \
-        -o asv_PE.cls \
-        asv_PE.fasta
+        -o asv_seq.cls \
+        aasv_seq.fasta
 fi
 
 end=$(date +%s.%N)
@@ -141,8 +141,8 @@ echo -e "\nConverging candidate template sequences...\n    Starts: $(date)">>$lo
 start=$(date +%s.%N)
 ${SCRIPTS}/converge.py \
         asv_count.csv \
-        asv_PE.fasta \
-        asv_PE.cls \
+        asv_seq.fasta \
+        asv_seq.cls \
         $log
 
 end=$(date +%s.%N)
